@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+    {% block starthead %}{% endblock starthead %}
+    <meta charset="{{ resource.meta.charset }}">
+
+    <title>{% block title %}{{ resource.meta.title }}{% endblock %}</title>
+    <meta name="description" content="{{ resource.meta.description }}">
+    <meta name="author" content="{{ resource.meta.author }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <link rel="alternate" type="application/rss+xml" title="Bradley Harris" href="/atom.xml" />
+      
+    {% block favicons %}
+        <link rel="shortcut icon" href="{{ media_url('images/icons/favicon.ico') }}">
+        <link rel="apple-touch-icon" href="{{ media_url('images/icons/apple-touch-icon.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ media_url('images/icons/apple-touch-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ media_url('images/icons/apple-touch-icon-114x114.png') }}">
+    {% endblock favicons %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{{ media_url('css/base.css') }}">
+        <link rel="stylesheet" href="{{ media_url('css/skeleton.css') }}">
+        <link rel="stylesheet" href="{{ media_url('css/layout.css') }}">
+        <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
+    {% endblock css %}
+
+  {% block headjs %}
+  
+  {% endblock headjs %}
+  
+  {% block endhead %}{% endblock endhead %}
+</head>
+<body id="{{ resource.meta.id if resource.meta.id else resource.slug }}">
+    {% block content %}
+        <div id="container" class="container">
+            {% block container %}
+                <div class="fifteen columns page-title">
+                    {% block header -%}
+                        <h1>Bradley Harris</h1>
+                    {%- endblock %}
+                </div>
+      
+                <div class="two columns sidebar">
+                    {% block nav %}
+                        {% from "macros.j2" import render_nav with context %}
+                        {{ render_nav(menu, 'main_nav') }}
+                    {% endblock %}
+	            </div>
+	    
+	            <div class="thirteen columns content">
+                    {% block main %}
+                    {% endblock main %}
+                </div>
+            {% endblock container %}
+        </div>
+    {% endblock content%}
+    
+    {% block js %}
+
+        {% block scripts %}
+        {% endblock scripts %}
+
+        {% block analytics %}
+            {% include "analytics.j2" %}
+        {% endblock analytics %}
+
+  {% endblock js %}
+</body>
+</html>

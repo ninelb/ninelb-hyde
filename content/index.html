@@ -1,0 +1,16 @@
+---
+extends: base.j2
+default_block: main
+title: Bradley Harris
+---
+
+{% from "macros.j2" import render_excerpt with context %}
+<section class="blog_excerpt">
+    {% set latest = site.content.walk_resources_sorted_by_time()|first %}
+
+    {% if latest -%}
+        {{ render_excerpt(latest, 'post') }}
+        <a class=""href="{{ content_url(latest.url) }}">Read more&nbsp;&gt;&gt;</a>
+    {%- endif %}
+
+</section>
