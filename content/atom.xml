@@ -9,6 +9,7 @@ listable: false
     <title>
         {% block title %}{{ resource.meta.title|default(feed_title) }}{% endblock %}
     </title>
+    <icon>http://ninelb.com/favicon.ico</icon>
     {% block self_url %}
     <link href="{{ resource.url }}" rel="self" />
     {% endblock %}
