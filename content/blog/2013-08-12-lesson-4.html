@@ -1,0 +1,20 @@
+---
+title: git bisect run
+created: !!timestamp '2013-08-12 20:50:00'
+tags:
+    - lesson-learned
+---
+
+{% mark excerpt -%}
+git bisect is an incredibly powerful tool for finding when in the source history something went wrong.
+{%- endmark %} Provide a known good and known bad commit and it walks you through a binary search for when a problem first occured. The typical process is:  run a test, tell git if the result was good or bad, it picks another commit, repeat until git tells you it is done. Every time I have used it I thought it would be useful to have a script to automate the process. It is tedious and can also be difficult to keep track of which step of the process you are on. Mis-marking a commit could cause all sorts of confusion. Rather than invite trouble I have always continued on with the manual process and then forgotten about automation until the next time I find myself in the midst of a bisect.
+
+It turns out that I just needed to read a little further in the documentation. Git has a built in command for automating of bisect. Just run:
+
+    git bisect <test command> 
+
+The test command just needs to return a non-zero value for failures.
+
+Next time I think of a useful feature for a popular software tool I need to remember: "If you thought of it, someone else may have already created it."
+
+[git bisect](http://robots.thoughtbot.com/post/57797091118/git-bisect)
