@@ -1,15 +1,17 @@
 ---
 extends: base.j2
 default_block: main
-title: Bradley Harris
+title: About
 ---
 
-{% from "macros.j2" import render_excerpt with context %}
-<section class="blog_excerpt">
-    {% for res in site.content.walk_resources_sorted_by_time() %}
-        {{ render_excerpt(res, 'post') }}
-        <a class=""href="{{ content_url(res.url) }}">Read more&nbsp;&gt;&gt;</a>
-        <hr/>
-    {%- endfor %}
+{% markdown %}
+* Veteran start-up software engineer (Twine Health, MapMyFitness, Sermo, Choicestream).  
+* Race Director for Somerville Road Runners [Gobble Gobble Gobble](http://srr.org/gobble) road race.
 
-</section>
+##### Contact: #####
+* [Email](mailto:bradley@ninelb.com)
+* [LinkedIn](http://www.linkedin.com/in/bradleyeharris)
+* [GitHub](https://github.com/ninelb)
+
+{% endmarkdown %}
+

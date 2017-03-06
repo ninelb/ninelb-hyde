@@ -19,11 +19,11 @@ context:
                 type: page
                 url: index.html
             -
-                name: About
-                description: About
-                css_class: about
+                name: Blog
+                description: Blog
+                css_class: blog
                 type: page
-                url: about.html
+                url: blog.html
 meta:
     nodemeta: meta.yaml
     created: !!timestamp 2012-07-15 00:00:00
